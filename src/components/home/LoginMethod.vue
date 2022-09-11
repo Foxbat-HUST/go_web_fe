@@ -14,16 +14,19 @@
 </template>
 <script lang="ts" setup>
 import { useToast } from 'bootstrap-vue-3'
+import {useRouter } from 'vue-router'
 interface LoginMethod {
     name: string,
     action: () => void
 }
 const toast = useToast()
+const router = useRouter()
 const loginMethods: LoginMethod[] = [
     {
         name: "With email",
         action: () => {
             console.log("gogogogog")
+            router.push('/login')
         }
     },
     {

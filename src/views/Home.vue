@@ -2,7 +2,6 @@
 import Intro from '@/components/home/Intro.vue';
 import LoginMethod from '@/components/home/LoginMethod.vue';
 </script>
-
 <template>
   <main>
     <b-container fluid="sm">
