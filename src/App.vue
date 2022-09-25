@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main class="app-main">
       <router-view/>
     </v-main>
   </v-app>
@@ -19,3 +19,9 @@ export default defineComponent({
   },
 })
 </script>
+<style scoped >
+.app-main{
+  background: var(--color-background-soft);
+  display: flex;
+}
+</style>
