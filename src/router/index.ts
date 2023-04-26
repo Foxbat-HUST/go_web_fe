@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Login from '@/components/pages/Login.vue'
+import { useAuthStore } from '@/stores/auth'
+import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,7 +13,7 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: HomeView
     },
@@ -25,5 +27,24 @@ const router = createRouter({
     }
   ]
 })
+
+router.beforeEach(
+  (to: RouteLocationNormalized, _: RouteLocationNormalized, next: NavigationGuardNext) => {
+    console.log('router...')
+    const authStore = useAuthStore()
+    if (to.path === '/login') {
+      next()
+      return
+    }
+    if (to.path === '') {
+      next()
+      return
+    }
+
+    if (!authStore.isAuthenticated) {
+      next('/login')
+    }
+  }
+)
 
 export default router

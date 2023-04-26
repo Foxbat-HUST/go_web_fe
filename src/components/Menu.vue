@@ -25,11 +25,11 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import router from '@/router';
-import { computed } from 'vue';
+import router from '@/router'
+import { computed } from 'vue'
 const rail = ref<boolean>(true)
 const isLoginPage = computed<boolean>(() => {
   console.log(router.currentRoute.value.path)
-  return router.currentRoute.value.path.startsWith("/login")
+  return router.currentRoute.value.path.startsWith('/login')
 })
 </script>
