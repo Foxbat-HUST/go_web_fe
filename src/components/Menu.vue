@@ -7,21 +7,26 @@
       </div>
     </div>
     <b-nav-item class="menu-item">
+      <span>
         <i-material-symbols-home color="white" />
-        <span>Home</span>
+        <router-link class="link-text" to="/home">Home</router-link>
+      </span>
     </b-nav-item>
     <b-nav-item class="menu-item">
-        <i-mdi-user-multiple color="white" class="mr-2"/>
-        <span>User</span>
+      <span>
+        <i-mdi-user-multiple color="white" />
+        <router-link class="link-text" to="/user">User</router-link>
+      </span>
     </b-nav-item>
   </b-nav>
 </template>
 <script setup lang="ts"></script>
 
 <style lang="scss">
-.menu{
+.menu {
   background-color: #32373d;
 }
+
 .profile-bg-image {
   background-image: url("/src/assets/images/mountain.jpg");
   min-height: 200px;
@@ -38,9 +43,18 @@
 }
 
 .menu-item {
-  border-bottom: 1px solid rgba(255,255,255,.05);
-  padding-left: 1em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-}
-</style>
+  border-bottom: 1px solid rgba(255, 255, 255, .05);
+
+  a {
+    height: 3.5em;
+  }
+
+  .link-text {
+    color: white;
+    margin-left: 2em;
+  }
+
+  :hover {
+    background: #2f89fc;
+  }
+}</style>
