@@ -6,27 +6,32 @@
         <h4 class="d-inline text-white font-weight-bold ml-2">Foxbat</h4>
       </div>
     </div>
-    <b-nav-item class="menu-item">
+    <b-nav-item class="menu-item" :class="{'active': isActive('/home')}">
       <span>
         <i-material-symbols-home color="white" />
         <router-link class="link-text" to="/home">Home</router-link>
       </span>
     </b-nav-item>
-    <b-nav-item class="menu-item">
+    <b-nav-item class="menu-item" :class="{'active': isActive('/users')}">
       <span>
-        <i-mdi-user-multiple color="white" />
-        <router-link class="link-text" to="/user">User</router-link>
-      </span>
+        <i-mdi-user-multiple color="white"/>
+        <router-link class="link-text" to="/users">User</router-link>
+        </span>
     </b-nav-item>
   </b-nav>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import router from '@/router';
+const isActive = (url: string):boolean =>{
+  const path = router.currentRoute.value.path
+  return path === url
+}
+</script>
 
 <style lang="scss">
-.menu {
+.menu{
   background-color: #32373d;
 }
-
 .profile-bg-image {
   background-image: url("/src/assets/images/mountain.jpg");
   min-height: 200px;
@@ -43,18 +48,19 @@
 }
 
 .menu-item {
-  border-bottom: 1px solid rgba(255, 255, 255, .05);
-
+  border-bottom: 1px solid rgba(255,255,255,.05);
   a {
     height: 3.5em;
   }
-
-  .link-text {
+  .link-text{
     color: white;
     margin-left: 2em;
   }
-
-  :hover {
+  :hover{
     background: #2f89fc;
   }
-}</style>
+}
+.active{
+  background-color: #2f89fc;
+}
+</style>
