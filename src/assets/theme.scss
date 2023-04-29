@@ -1,0 +1,7 @@
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
+// Your variable overrides
+
+:root{
+  --bs-body-bg:rgb(231, 240, 246);
+}

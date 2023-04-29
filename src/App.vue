@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import Menu from '@/components/Menu.vue'
+
 </script>
 
 <template>
-  <v-layout>
+  <b-button>ahihihihi</b-button>
+  <!-- <v-layout>
     <Menu></Menu>
     <v-main>
       <RouterView />
     </v-main>
-  </v-layout>
+  </v-layout> -->
   <!-- <div>
     <Menu></Menu>
   </div>
