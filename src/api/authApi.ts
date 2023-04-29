@@ -1,9 +1,8 @@
 import { UserType, type User } from '@/model/user'
 import { BaseApi } from './baseApi'
 
-export interface AuthUserResponse {
+export interface AuthUserResponse extends User {
   token: string
-  user: User
 }
 
 export class AuthApi extends BaseApi {
@@ -20,16 +19,14 @@ export class AuthApi extends BaseApi {
     return AuthApi.instance
   }
 
-  public getAuthUser(): Promise<AuthUserResponse> {
-    return Promise.resolve<AuthUserResponse>({
-      token: 'abc',
-      user: {
-        id: 1,
-        age: 29,
-        email: 'anpq@gmail.com',
-        name: 'pham quoc an',
-        type: UserType.Admin
-      }
+  public login(email: string, password: string): Promise<any> {
+    return this.Post<{}>('/auth/login', {
+      email: email,
+      password: password
     })
+  }
+
+  public authInit(): Promise<AuthUserResponse> {
+    return this.Get<AuthUserResponse>('auth/init').then((val) => val.data)
   }
 }

@@ -1,20 +1,39 @@
 <template>
-  <div class="d-flex align-center justify-center" style="height: 100vh">
-    <v-sheet width="400" class="mx-auto">
-      <v-form fast-fail>
-        <v-text-field v-model="userName" label="User Name"></v-text-field>
-        <v-text-field v-model="password" label="password"></v-text-field>
-        <a href="#" class="text-body-2 font-weight-regular">Forgot Password?</a>
-        <v-btn type="submit" color="primary" block class="mt-2">Login</v-btn>
-      </v-form>
-      <div class="mt-2">
-        <p class="text-body-2">Don't have an account? <a href="#">Sign Up</a></p>
-      </div>
-    </v-sheet>
+  <div>
+    <b-card class="position-absolute top-50 start-50 translate-middle">
+      <b-form-input v-model="userName" placeholder="enter user name">
+      </b-form-input>
+      <b-form-input v-model="password" type="password" placeholder="enter password"></b-form-input>
+      <b-button @click="doLogin">Login</b-button>
+  </b-card>
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
+import { useLoadingStore } from '@/stores/loading';
+import { AuthApi } from '@/api/authApi';
+import { useRouter } from 'vue-router';
+const loadingStore = useLoadingStore()
 const userName = ref<string>('')
 const password = ref<string>('')
+const router = useRouter()
+
+const doLogin = async () => {
+  try{
+    loadingStore.showLoading()
+    await AuthApi.getInstance().login(userName.value, password.value)
+    router.push("/home")
+  }catch(e){
+    console.log(e)
+
+  }finally{
+    loadingStore.hideLoading()
+  }
+
+}
 </script>
+<style scoped lang="scss" >
+.login-form{
+  width: 500px;
+}
+</style>
