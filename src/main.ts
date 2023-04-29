@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './assets/css/theme.scss'
 import './assets/css/app.scss'
 
-
 import AppVue from './App.vue'
 import router from './router'
 

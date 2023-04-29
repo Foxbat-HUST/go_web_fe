@@ -1,24 +1,26 @@
 import { defineStore } from 'pinia'
-import { ref, computed, reactive } from 'vue'
-import { UserType } from '@/model/user'
-export interface UserAuth {
-  name: string
-  type: UserType
-  token: string | undefined
+import { ref, computed, readonly } from 'vue'
+import { UserType, type User } from '@/model/user'
+export interface UserAuth extends User {
+  token: string
 }
+const AUTHENTICATE_KEY = 'isAuthenticated'
 export const useAuthStore = defineStore('auth', () => {
-  const state = reactive<UserAuth>({
-    name: '',
-    type: UserType.None,
-    token: undefined
-  })
+  const state = ref<UserAuth>()
   function setAuthUser(user: UserAuth) {
-    state.name = user.name
-    state.type = user.type
-    state.token = user.token
+    state.value = user
   }
 
-  const authToken = computed<string | undefined>(() => state.token)
+  function setIsAuthenticated(val: boolean) {
+    localStorage.setItem(AUTHENTICATE_KEY, val.toString())
+  }
 
-  return { setAuthUser, authToken }
+  const isAuthenticated = (() => localStorage.getItem(AUTHENTICATE_KEY) === 'true')()
+
+  return {
+    setAuthUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    token: readonly<String>(state.value?.token || '')
+  }
 })
