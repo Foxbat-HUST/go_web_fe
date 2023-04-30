@@ -1,4 +1,4 @@
-import { UserType, type User } from '@/model/user'
+import { type User } from '@/model/user'
 import { BaseApi } from './baseApi'
 
 export interface AuthUserResponse extends User {

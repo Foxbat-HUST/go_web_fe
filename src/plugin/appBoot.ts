@@ -1,18 +1,15 @@
 import type { App } from 'vue'
-import { HttpFactory } from '@/api/httpFactory'
-import { AuthApi } from '@/api/authApi'
 import { useAuthStore } from '@/stores/auth'
+import { type AuthUserResponse } from '@/api/authApi'
 
-export default async function appBoot(app: App) {
-  HttpFactory.init()
-  const authData = await AuthApi.getInstance().authInit()
+export default function appBoot(app: App, option: AuthUserResponse) {
   const authStore = useAuthStore()
   authStore.setAuthUser({
-    id: authData.id,
-    name: authData.name,
-    email: authData.email,
-    age: authData.age,
-    type: authData.type,
-    token: authData.token
+    id: option.id,
+    name: option.name,
+    email: option.email,
+    age: option.age,
+    type: option.type,
+    token: option.token
   })
 }

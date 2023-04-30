@@ -12,3 +12,11 @@ export interface User {
   age: number
   type: UserType
 }
+
+export const emptyUser: User = {
+  id: 0,
+  name: '',
+  email: '',
+  age: 0,
+  type: UserType.None
+}
