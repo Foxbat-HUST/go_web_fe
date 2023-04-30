@@ -1,9 +1,9 @@
 <template>
-  <b-overlay :show="loadingStore.loading" rounded="sm" class="h-100 w-100">
+  <b-overlay :show="loadingStore.loading" rounded="sm" class="h-100 w-100 d-flex">
     <Menu class="menu h-100" v-if="showMenu"></Menu>
-  <div class="content h-100 flex-grow-1">
-    <RouterView />
-  </div>
+    <div class="content h-100 flex-grow-1">
+      <RouterView />
+    </div>
   </b-overlay>
 </template>
 
