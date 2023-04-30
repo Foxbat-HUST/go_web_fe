@@ -31,4 +31,7 @@ const showMenu = computed<boolean>(() => {
   max-width: 320px;
   min-width: 320px;
 }
+.content {
+  padding: 1em;
+}
 </style>

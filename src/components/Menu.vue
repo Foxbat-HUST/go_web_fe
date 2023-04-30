@@ -7,14 +7,14 @@
       </div>
     </div>
     <b-nav-item class="menu-item" :class="{ active: isActive('/home') }">
-      <span>
-        <i-material-symbols-home color="white" />
+      <span class="link">
+        <i-material-symbols-home />
         <router-link class="link-text" to="/home">Home</router-link>
       </span>
     </b-nav-item>
     <b-nav-item class="menu-item" :class="{ active: isActive('/users') }">
-      <span>
-        <i-mdi-user-multiple color="white" />
+      <span class="link">
+        <i-mdi-user-multiple />
         <router-link class="link-text" to="/users">User</router-link>
       </span>
     </b-nav-item>
@@ -55,15 +55,18 @@ const isActive = (url: string): boolean => {
   a {
     height: 3.5em;
   }
-  .link-text {
-    color: white;
-    margin-left: 2em;
+  .link {
+    color: var(--bs-link-color);
+    .link-text {
+      margin-left: 2em;
+    }
   }
+
   :hover {
-    background: #2f89fc;
+    background: var(--bs-body-bg);
   }
 }
 .active {
-  background-color: #2f89fc;
+  background-color: var(--bs-body-bg);
 }
 </style>
