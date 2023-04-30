@@ -35,5 +35,5 @@ const itemClick = (path: string) => {
   router.push(path)
 }
 const items = computed<IItem[]>(() => props.items)
-const activeItem = computed<IItem|undefined>(() => props.items.filter(i => i.active)?.[0])
+const activeItem = computed<IItem | undefined>(() => props.items.filter((i) => i.active)?.[0])
 </script>

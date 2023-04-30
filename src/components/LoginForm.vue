@@ -25,20 +25,21 @@
 import { ref } from 'vue'
 import { useLoadingStore } from '@/stores/loading'
 import { AuthApi } from '@/api/authApi'
-import { useRouter } from 'vue-router'
 import Logo from '@/components/Logo.vue'
+import { useAuthStore } from '@/stores/auth'
 const loadingStore = useLoadingStore()
 const userName = ref<string>('')
 const password = ref<string>('')
-const router = useRouter()
 const showErr = ref<boolean>(false)
+const authStore = useAuthStore()
 
 const doLogin = async () => {
   try {
     showErr.value = false
     loadingStore.showLoading()
     await AuthApi.getInstance().login(userName.value, password.value)
-    router.push('/home')
+    authStore.setIsAuthenticated(true)
+    window.location.href = '/home'
   } catch (e) {
     showErr.value = true
   } finally {
