@@ -9,6 +9,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BBreadcrumb: typeof import('bootstrap-vue-next')['BBreadcrumb']
+    BBreadcrumbItem: typeof import('bootstrap-vue-next')['BBreadcrumbItem']
     BButton: typeof import('bootstrap-vue-next')['BButton']
     BCard: typeof import('bootstrap-vue-next')['BCard']
     BCardBody: typeof import('bootstrap-vue-next')['BCardBody']
@@ -24,6 +26,7 @@ declare module '@vue/runtime-core' {
     BOverlay: typeof import('bootstrap-vue-next')['BOverlay']
     BRow: typeof import('bootstrap-vue-next')['BRow']
     BSidebar: typeof import('bootstrap-vue-next')['BSidebar']
+    Header: typeof import('./src/components/Header.vue')['default']
     IBi0Circle: typeof import('~icons/bi/0-circle')['default']
     IMaterialSymbolsHome: typeof import('~icons/material-symbols/home')['default']
     IMdiUserMultiple: typeof import('~icons/mdi/user-multiple')['default']
