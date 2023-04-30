@@ -21,3 +21,15 @@ body {
 a {
   text-decoration: none;
 }
+
+.content-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.center-absolute {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

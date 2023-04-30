@@ -10,5 +10,5 @@ export const useLoadingStore = defineStore('loading', () => {
     state.value = false
   }
 
-  return { showLoading, hideLoading, loading : computed(() => state.value) }
+  return { showLoading, hideLoading, loading: computed(() => state.value) }
 })

@@ -2,7 +2,7 @@
   <b-nav vertical class="menu">
     <div class="d-flex align-items-center justify-content-center profile-bg-image">
       <div>
-        <img class="profile-image" src="/src/assets/images/profile.jpg" />
+        <Logo></Logo>
         <h4 class="d-inline text-white font-weight-bold ml-2">Foxbat</h4>
       </div>
     </div>
@@ -22,6 +22,8 @@
 </template>
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import Logo from '@/components/Logo.vue'
+
 const isActive = (url: string): boolean => {
   const router = useRouter()
   const path = router.currentRoute.value.path
