@@ -25,7 +25,7 @@ const showMenu = computed<boolean>(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .menu {
   width: 320px;
   max-width: 320px;

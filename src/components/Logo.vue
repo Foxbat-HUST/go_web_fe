@@ -2,12 +2,12 @@
   <img class="profile-image" :class="sizeClass" src="/src/assets/images/profile.jpg" />
 </template>
 <script setup lang="ts">
-import { computed, defineProps, type PropType } from 'vue';
+import { computed, defineProps, type PropType } from 'vue'
 type SizeType = 'xs' | 'sm' | 'md'
 const props = defineProps({
   size: {
     type: String as PropType<SizeType>,
-    default(){
+    default() {
       return 'sm'
     }
   }
@@ -22,17 +22,17 @@ const sizeClass = computed(() => `size-${props.size}`)
   margin-right: 0.5rem;
 }
 
-.size-xs{
+.size-xs {
   width: 50px;
   height: 50px;
   border-radius: 25px;
 }
-.size-sm{
+.size-sm {
   width: 100px;
   height: 100px;
   border-radius: 50px;
 }
-.size-md{
+.size-md {
   width: 200px;
   height: 200px;
   border-radius: 100px;
