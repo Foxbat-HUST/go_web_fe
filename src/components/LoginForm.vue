@@ -38,7 +38,6 @@ const doLogin = async () => {
     showErr.value = false
     loadingStore.showLoading()
     await AuthApi.getInstance().login(userName.value, password.value)
-    authStore.setIsAuthenticated(true)
     window.location.href = '/home'
   } catch (e) {
     showErr.value = true
