@@ -20,4 +20,11 @@ export class BaseApi {
     const authStore = useAuthStore()
     return this.http.delete<T>(url, { headers: { Authorization: `Bearer ${authStore.token}` } })
   }
+
+  protected $put<T = any>(url: string, payload: any): Promise<AxiosResponse<T>> {
+    const authStore = useAuthStore()
+    return this.http.put<T>(url, payload, {
+      headers: { Authorization: `Bearer ${authStore.token}` }
+    })
+  }
 }

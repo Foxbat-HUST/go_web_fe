@@ -27,6 +27,6 @@ export class AuthApi extends BaseApi {
   }
 
   public authInit(): Promise<AuthUserResponse> {
-    return this.Get<AuthUserResponse>('auth/init').then((val) => val.data)
+    return this.$get<AuthUserResponse>('auth/init').then((val) => val.data)
   }
 }

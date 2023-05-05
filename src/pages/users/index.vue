@@ -3,7 +3,7 @@
   <div>
     <b-table :fields="tableFields" :items="users">
       <template #cell(edit)="{ item }">
-        <b-button variant="primary" class="mr-2">
+        <b-button variant="primary" class="mr-2" @click="editBtnClick(item.id)">
           <i-material-symbols-edit-square-outline-rounded class="icon mr-1" />
           <span>Edit</span>
         </b-button>
@@ -22,6 +22,7 @@ import { ref, onMounted, inject } from 'vue'
 import { UserApi } from '@/api/userApi'
 import { useLoadingStore } from '@/stores/loading'
 import { type TableField } from 'bootstrap-vue-next'
+import { useRouter } from 'vue-router'
 import { ConfirmSymbol, type ConfirmFunctionType } from '@/util/confirm'
 const headerItems = ref<Array<IItem>>([
   {
@@ -60,6 +61,7 @@ const loadingStore = useLoadingStore()
 const userApi = UserApi.getInstance()
 const users = ref<Array<User>>([])
 const userCount = ref<number>(0)
+const router = useRouter()
 const loadUser = async () => {
   const res = await userApi.list({
     pageIndex: 1,
@@ -86,6 +88,9 @@ const deleteBtnCLick = async (id: number) => {
   } finally {
     loadingStore.hideLoading()
   }
+}
+const editBtnClick = (id: number) => {
+  router.push(`/users/${id}/edit`)
 }
 onMounted(async () => {
   try {

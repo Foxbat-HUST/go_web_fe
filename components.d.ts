@@ -29,6 +29,7 @@ declare module '@vue/runtime-core' {
     BSidebar: typeof import('bootstrap-vue-next')['BSidebar']
     BTable: typeof import('bootstrap-vue-next')['BTable']
     ConfirmModal: typeof import('./src/components/common/ConfirmModal.vue')['default']
+    FooterButton: typeof import('./src/components/common/FooterButton.vue')['default']
     Header: typeof import('./src/components/common/Header.vue')['default']
     IBi0Circle: typeof import('~icons/bi/0-circle')['default']
     IMaterialSymbolsDeleteForever: typeof import('~icons/material-symbols/delete-forever')['default']

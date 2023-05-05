@@ -7,6 +7,12 @@ export interface UserPageData {
   count: number
 }
 
+export interface UpdateUserPayload {
+  name: string
+  email: string
+  age: number
+}
+
 export class UserApi extends BaseApi {
   private static instance?: UserApi
   private constructor() {
@@ -35,5 +41,9 @@ export class UserApi extends BaseApi {
 
   public get(id: string): Promise<User> {
     return this.$get<User>(`api/v1/users/${id}`).then((res) => res.data)
+  }
+
+  public update(id: string, payload: UpdateUserPayload): Promise<void> {
+    return this.$put<void>(`api/v1/users/${id}`, payload).then((res) => res.data)
   }
 }

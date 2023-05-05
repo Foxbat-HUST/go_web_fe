@@ -27,7 +27,7 @@ import Logo from '@/components/Logo.vue'
 const isActive = (url: string): boolean => {
   const router = useRouter()
   const path = router.currentRoute.value.path
-  return path === url
+  return path.startsWith(url)
 }
 </script>
 
