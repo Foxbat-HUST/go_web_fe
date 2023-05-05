@@ -20,13 +20,13 @@ export class AuthApi extends BaseApi {
   }
 
   public login(email: string, password: string): Promise<any> {
-    return this.Post<{}>('/auth/login', {
+    return this.$post<{}>('/auth/login', {
       email: email,
       password: password
     })
   }
 
   public authInit(): Promise<AuthUserResponse> {
-    return this.Get<AuthUserResponse>('auth/init').then((val) => val.data)
+    return this.$get<AuthUserResponse>('auth/init').then((val) => val.data)
   }
 }

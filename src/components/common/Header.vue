@@ -1,7 +1,7 @@
 <template>
   <b-breadcrumb>
     <b-breadcrumb-item>
-      <i-material-symbols-home @click="itemClick('/home')" />
+      <i-material-symbols-home class="icon" @click="itemClick('/home')" />
     </b-breadcrumb-item>
     <b-breadcrumb-item
       v-for="item in items"

@@ -10,7 +10,7 @@ import router from './router'
 import appBoot from './plugin/appBoot'
 import { HttpFactory } from '@/api/httpFactory'
 import { type AuthUserResponse } from './api/authApi'
-import {emptyUser } from './model/user'
+import { emptyUser } from './model/user'
 // TODO: move authentication init logic to some where...
 HttpFactory.init()
 const http = HttpFactory.getHttpInstance()
@@ -23,8 +23,6 @@ try {
     token: ''
   }
 }
-createApp(App)
-  .use(createPinia())
-  .use(router)
-  .use<AuthUserResponse>(appBoot, authData)
-  .mount('#app')
+const app = createApp(App)
+app._instance
+app.use(createPinia()).use(router).use<AuthUserResponse>(appBoot, authData).mount('#app')

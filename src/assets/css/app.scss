@@ -27,9 +27,20 @@ a {
   align-items: center;
   justify-content: center;
 }
+.horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
 .center-absolute {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.icon {
+  vertical-align: -0.15em;
 }
