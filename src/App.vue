@@ -5,12 +5,15 @@
       <RouterView />
     </div>
   </b-overlay>
+  <ConfirmModal ref="confirmModel" />
 </template>
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import Menu from '@/components/Menu.vue'
-import { computed } from 'vue'
+import ConfirmModal from '@/components/common/ConfirmModal.vue'
+import { ConfirmSymbol, type IConfirmModel } from '@/util/confirm'
+import { computed, ref, onMounted, provide } from 'vue'
 import { useRouter } from 'vue-router'
 import { useLoadingStore } from './stores/loading'
 const loadingStore = useLoadingStore()
@@ -22,6 +25,16 @@ const showMenu = computed<boolean>(() => {
     default:
       return true
   }
+})
+const confirmModel = ref<IConfirmModel>()
+onMounted(() => {
+  const confirm = (title: string, content: string): Promise<boolean> => {
+    if (confirmModel.value) {
+      return confirmModel.value?.confirm(title, content)
+    }
+    return Promise.reject()
+  }
+  provide(ConfirmSymbol, confirm)
 })
 </script>
 

@@ -3,7 +3,7 @@ import { BaseApi } from '@/api/baseApi'
 import { type PageOption } from '@/api/common'
 
 export interface UserPageData {
-  user: Array<User>
+  users: Array<User>
   count: number
 }
 
@@ -26,6 +26,14 @@ export class UserApi extends BaseApi {
     if (options) {
       queryParam = `?p=${options.pageIndex}&l=${options.itemPerPage}`
     }
-    return this.Get<UserPageData>(`api/v1/users${queryParam}`).then((res) => res.data)
+    return this.$get<UserPageData>(`api/v1/users${queryParam}`).then((res) => res.data)
+  }
+
+  public delete(id: number): Promise<void> {
+    return this.$delete<void>(`api/v1/users/${id}`).then((res) => res.data)
+  }
+
+  public get(id: string): Promise<User> {
+    return this.$get<User>(`api/v1/users/${id}`).then((res) => res.data)
   }
 }

@@ -8,13 +8,13 @@
     </div>
     <b-nav-item class="menu-item" :class="{ active: isActive('/home') }">
       <span class="link">
-        <i-material-symbols-home />
+        <i-material-symbols-home class="icon" />
         <router-link class="link-text" to="/home">Home</router-link>
       </span>
     </b-nav-item>
     <b-nav-item class="menu-item" :class="{ active: isActive('/users') }">
       <span class="link">
-        <i-mdi-user-multiple />
+        <i-material-symbols-person class="icon" />
         <router-link class="link-text" to="/users">User</router-link>
       </span>
     </b-nav-item>

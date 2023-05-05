@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import { ref, computed, readonly } from 'vue'
-import { UserType, type User } from '@/model/user'
+import { ref, computed } from 'vue'
+import { type User } from '@/model/user'
 export interface UserAuth extends User {
   token: string
 }

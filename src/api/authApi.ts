@@ -20,7 +20,7 @@ export class AuthApi extends BaseApi {
   }
 
   public login(email: string, password: string): Promise<any> {
-    return this.Post<{}>('/auth/login', {
+    return this.$post<{}>('/auth/login', {
       email: email,
       password: password
     })
